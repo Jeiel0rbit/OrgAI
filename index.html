@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrgAI - Download</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #1e3c72, #2a5298, #1e3c72);
+            background-size: 200% 200%;
+            animation: gradientFlow 10s ease infinite;
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 1rem;
+            padding: 2rem;
+            width: 90%;
+            max-width: 25rem;
+            box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.4);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(42, 82, 152, 0.2), transparent);
+            animation: pulse 6s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.2; }
+            100% { transform: scale(0.8); opacity: 0.5; }
+        }
+
+        .card-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-header h1 {
+            font-size: 2rem;
+            color: #1e3c72;
+            margin-bottom: 0.5rem;
+            animation: fadeInDown 1s ease;
+        }
+
+        .card-header p {
+            font-size: 1rem;
+            color: #555;
+            opacity: 0;
+            animation: fadeIn 1.5s ease forwards 0.5s;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-1rem); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .card-body {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: #2a5298;
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+        }
+
+        .download-btn:hover::after {
+            width: 15rem;
+            height: 15rem;
+        }
+
+        .download-btn:hover {
+            background: #1e3c72;
+            transform: translateY(-0.2rem);
+        }
+
+        @media (max-width: 20rem) {
+            .card {
+                padding: 1.5rem;
+            }
+
+            .card-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .download-btn {
+                padding: 0.6rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">
+            <h1>OrgAI</h1>
+            <p>Organização Inteligente para o Futuro</p>
+        </div>
+        <div class="card-body">
+            <a href="https://objects.githubusercontent.com/github-production-release-asset-2e65be/936751579/038aad65-c6e2-4f5d-9469-70127d9d1069?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=releaseassetproduction%2F20250221%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250221T164045Z&X-Amz-Expires=300&X-Amz-Signature=96a6dc2a9abc940e85b4f90ea8ca84a2639cdec18c260cc62ff3ce7e47ce4737&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%3DOrgAI.exe&response-content-type=application%2Foctet-stream" 
+               class="download-btn" 
+               download="OrgAI.exe">
+                Download
+            </a>
+        </div>
+    </div>
+</body>
+</html>
