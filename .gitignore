@@ -1,0 +1,29 @@
+# Compiled Python files
+*.pyc
+*.pyo
+__pycache__/
+
+# Distribution / packaging
+.eggs/
+dist/
+build/
+wheels/
+*.egg-info/
+.venv/
+venv/
+
+# Executables
+*.exe
+*.dll
+
+# VS Code files
+.vscode/
+
+# Temporary files
+*~
+\#*
+*.swp
+
+# PyInstaller
+/dist
+/build
