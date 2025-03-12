@@ -2,10 +2,10 @@
 
 
 a = Analysis(
-    ['OrgAI.py'],
+    ['orgai.py'],
     pathex=[],
     binaries=[],
-    datas=[('Gemini_Generated_Image_qu6qzqu6qzqu6qzq.ico', '.')],
+    datas=[('logo.ico', '.')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -22,7 +22,7 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name='OrgAI',
+    name='orgai',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -35,5 +35,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['Gemini_Generated_Image_qu6qzqu6qzqu6qzq.ico'],
+    icon=['logo.ico'],
 )

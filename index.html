@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OrgAI - Download</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -150,21 +151,106 @@
                 font-size: 1rem;
             }
         }
+
+        .security-seal {
+            display: block;
+            margin: 1rem auto;
+            width: 100px;
+            height: auto;
+            font-size: 4rem;
+            color: #2a5298;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .toast {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 2px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+            font-size: 17px;
+        }
+
+        .toast.show {
+            visibility: visible;
+            -webkit-animation: fadein 0.5s, fadeout 0.5s 4.5s;
+            animation: fadein 0.5s, fadeout 0.5s 4.5s;
+        }
+
+        @-webkit-keyframes fadein {
+            from { bottom: 0; opacity: 0; }
+            to { bottom: 30px; opacity: 1; }
+        }
+
+        @keyframes fadein {
+            from { bottom: 0; opacity: 0; }
+            to { bottom: 30px; opacity: 1; }
+        }
+
+        @-webkit-keyframes fadeout {
+            from { bottom: 30px; opacity: 1; }
+            to { bottom: 0; opacity: 0; }
+        }
+
+        @keyframes fadeout {
+            from { bottom: 30px; opacity: 1; }
+            to { bottom: 0; opacity: 0; }
+        }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
     <div class="card">
         <div class="card-header">
             <h1>OrgAI</h1>
-            <p>Organização Inteligente para o Futuro</p>
+            <p>Organização Inteligente para o Futuro!</p>
         </div>
         <div class="card-body">
-            <a href="https://objects.githubusercontent.com/github-production-release-asset-2e65be/936751579/038aad65-c6e2-4f5d-9469-70127d9d1069?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=releaseassetproduction%2F20250221%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250221T164045Z&X-Amz-Expires=300&X-Amz-Signature=96a6dc2a9abc940e85b4f90ea8ca84a2639cdec18c260cc62ff3ce7e47ce4737&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%3DOrgAI.exe&response-content-type=application%2Foctet-stream" 
+            <a href="orgai.exe" 
                class="download-btn" 
                download="OrgAI.exe">
                 Download
             </a>
+            <div class="security-seal"><i class="fas fa-lock"></i></div>
+            <p style="color: #2a5298;">Seguro</p>
         </div>
     </div>
+    <div id="toast" class="toast">O programa não tem malware. O bloqueio pode ocorrer devido à falta de uma assinatura válida.</div>
+    <script>
+        $(document).ready(function() {
+            var toast = $('#toast');
+            toast.addClass('show');
+            setTimeout(function() {
+                toast.removeClass('show');
+            }, 5000);
+
+            $('.download-btn').on('click', function() {
+                fetch('https://ntfy.sh/Download-OrgAI', {
+                    method: 'POST',
+                    body: 'Alguém fez download no seu site 😀'
+                }).then(response => {
+                    if (response.ok) {
+                        console.log('Notification sent successfully');
+                    } else {
+                        console.error('Failed to send notification');
+                    }
+                }).catch(error => {
+                    console.error('Error:', error);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
