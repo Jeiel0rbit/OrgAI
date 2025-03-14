@@ -243,22 +243,33 @@
             setTimeout(function() {
                 toast.removeClass('show');
             }, 5000);
-
+    
             $('.download-btn').on('click', function() {
-                fetch('https://ntfy.sh/Download-OrgAI', {
-                    method: 'POST',
-                    body: 'Alguém fez download no seu site 😀'
-                }).then(response => {
-                    if (response.ok) {
-                        console.log('Notification sent successfully');
-                    } else {
-                        console.error('Failed to send notification');
-                    }
-                }).catch(error => {
-                    console.error('Error:', error);
-                });
+                // Obtendo o IP público
+                fetch('https://api.ipify.org?format=json')
+                    .then(response => response.json())
+                    .then(data => {
+                        var ip = data.ip;
+                        // Enviando o IP para o ntfy
+                        fetch('https://ntfy.sh/Download-OrgAI', {
+                            method: 'POST',
+                            body: `Alguém fez download no seu site 😀 - IP: ${ip}` // Analítico apenas.
+                        }).then(response => {
+                            if (response.ok) {
+                                console.log('Notificação enviada com sucesso');
+                            } else {
+                                console.error('Falha ao enviar notificação');
+                            }
+                        }).catch(error => {
+                            console.error('Erro:', error);
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Erro ao obter IP:', error);
+                    });
             });
         });
     </script>
+    
 </body>
 </html>
